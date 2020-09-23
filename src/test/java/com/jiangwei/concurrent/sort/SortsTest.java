@@ -16,7 +16,9 @@ public class SortsTest {
     public void testBubbleSort() {
         int[] arr = {3, 11, 20, 2, 17, 22, 9, 19, 49, 8, 50};
 
-        arr = bubbleSort(arr);
+        //arr = bubbleSort(arr);
+
+        arr = selectionSort(arr);
 
         System.out.println(JSON.toJSONString(arr));
     }
@@ -37,6 +39,29 @@ public class SortsTest {
                     arr[j] = tmp;
                 }
             }
+        }
+        return arr;
+    }
+
+
+    /**
+     * 选择排序
+     * @param arr
+     * @return
+     */
+    private int[] selectionSort(int[] arr) {
+        if(arr.length == 0)
+            return arr;
+        for(int i=0; i<arr.length; i++) {
+            int minIndex = i;
+            for(int j=i; j<arr.length; j++) {
+                if(arr[j] < arr[minIndex]) {
+                    minIndex = j;
+                }
+            }
+            int tmp = arr[minIndex];
+            arr[minIndex] = arr[i];
+            arr[i] = tmp;
         }
         return arr;
     }
